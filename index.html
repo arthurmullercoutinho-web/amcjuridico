@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AMC Advocacia em Cuiabá/MT. Atendimento estratégico nas áreas previdenciária, tributária e criminal. Fale pelo WhatsApp." />
+  <title>AMC Advocacia | Previdenciário, Tributário e Criminal em Cuiabá</title>
+  <style>
+    :root {
+      --bg: #080d14;
+      --bg-soft: #101720;
+      --card: #131b26;
+      --card-2: #0f1620;
+      --line: rgba(255,255,255,.12);
+      --text: #f6f1e8;
+      --muted: #c9d3e4;
+      --soft: #91a0b8;
+      --gold: #d9a968;
+      --gold-2: #f0c989;
+      --danger: #b88a52;
+      --shadow: 0 24px 80px rgba(0,0,0,.45);
+      --radius: 28px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(217,169,104,.20), transparent 34%),
+        radial-gradient(circle at 85% 12%, rgba(255,255,255,.08), transparent 30%),
+        linear-gradient(180deg, #05080d 0%, #0b1119 45%, #080d14 100%);
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(8,13,20,.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--gold), #8c6337);
+      color: #111;
+      font-family: Georgia, serif;
+      font-weight: 800;
+      box-shadow: 0 12px 30px rgba(217,169,104,.20);
+    }
+
+    .brand strong { display: block; font-size: 1rem; letter-spacing: .02em; }
+    .brand span { display: block; color: var(--soft); font-size: .76rem; margin-top: 1px; }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .navlinks a:hover { color: var(--gold-2); }
+
+    .btn {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 14px 19px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: .22s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+      color: #15100a;
+      border-color: rgba(255,255,255,.05);
+      box-shadow: 0 16px 42px rgba(217,169,104,.25);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+    }
+
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.04); }
+
+    .hero {
+      position: relative;
+      padding: 52px 0 34px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .kicker {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--gold-2);
+      border: 1px solid rgba(217,169,104,.30);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(217,169,104,.08);
+      font-size: .82rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; line-height: 1.05; margin: 0; }
+    h1 { font-size: clamp(2.5rem, 6vw, 5.4rem); letter-spacing: -.05em; }
+    h1 span { color: var(--gold-2); }
+    .lead {
+      font-size: clamp(1.04rem, 2vw, 1.26rem);
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 680px;
+      margin: 22px 0 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .trust-item {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 14px;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.35;
+    }
+
+    .trust-item strong { display: block; color: var(--text); margin-bottom: 3px; }
+
+    .photo-card {
+      position: relative;
+      min-height: 600px;
+      border-radius: 36px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.86)),
+        url('dr-arthur.jpg') center/cover no-repeat;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .photo-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(8,13,20,.72), transparent 56%);
+    }
+
+    .photo-overlay {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(9,14,22,.78);
+      backdrop-filter: blur(14px);
+      border-radius: 24px;
+      padding: 20px;
+    }
+
+    .photo-overlay strong { font-size: 1.1rem; display: block; }
+    .photo-overlay p { color: var(--muted); line-height: 1.55; margin: 8px 0 0; font-size: .95rem; }
+
+    section { padding: 66px 0; }
+    .section-head { max-width: 760px; margin-bottom: 28px; }
+    .eyebrow { color: var(--gold-2); font-weight: 900; text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; margin-bottom: 10px; }
+    h2 { font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.04em; }
+    .section-head p { color: var(--muted); line-height: 1.7; font-size: 1.06rem; }
+
+    .areas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .area-card {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+      border-radius: var(--radius);
+      padding: 24px;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 60px rgba(0,0,0,.20);
+    }
+
+    .area-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 19px;
+      background: rgba(217,169,104,.12);
+      border: 1px solid rgba(217,169,104,.26);
+      display: grid;
+      place-items: center;
+      color: var(--gold-2);
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    .area-card h3 { font-size: 1.62rem; margin-bottom: 12px; }
+    .area-card p { color: var(--muted); line-height: 1.62; margin: 0 0 16px; }
+    .area-card ul { padding-left: 20px; color: var(--muted); line-height: 1.65; margin: 0 0 22px; }
+    .area-card .btn { margin-top: auto; width: 100%; }
+
+    .strip {
+      border: 1px solid rgba(217,169,104,.22);
+      background: linear-gradient(135deg, rgba(217,169,104,.13), rgba(255,255,255,.035));
+      border-radius: 34px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .strip p { color: var(--muted); line-height: 1.6; margin: 12px 0 0; }
+    .strip .hero-actions { justify-content: flex-end; margin: 0; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+      border-radius: 22px;
+      padding: 20px;
+    }
+
+    .num {
+      color: var(--gold-2);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .step strong { display: block; margin-bottom: 8px; }
+    .step p { color: var(--muted); line-height: 1.55; margin: 0; font-size: .94rem; }
+
+    .about-card {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+      border-radius: 34px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .about-photo {
+      min-height: 390px;
+      border-radius: 28px;
+      background: url('dr-arthur.jpg') center/cover no-repeat;
+      border: 1px solid var(--line);
+    }
+
+    .about-card p { color: var(--muted); line-height: 1.75; font-size: 1.05rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-box {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 28px;
+      background: var(--card);
+    }
+
+    .contact-box h3 { font-size: 1.7rem; }
+    .contact-box p, .contact-box address { color: var(--muted); line-height: 1.7; font-style: normal; }
+
+    .map-frame {
+      width: 100%;
+      min-height: 320px;
+      border: 0;
+      border-radius: 24px;
+      filter: grayscale(15%) contrast(1.02);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0 96px;
+      color: var(--soft);
+      font-size: .9rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .privacy {
+      color: var(--gold-2);
+      font-weight: 700;
+      cursor: pointer;
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit;
+    }
+
+    .floating-whats {
+      position: fixed;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 60;
+      display: none;
+    }
+
+    .floating-whats .btn { width: 100%; padding: 16px 18px; }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.72);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .modal.open { display: flex; }
+    .modal-box {
+      width: min(760px, 100%);
+      max-height: 86vh;
+      overflow: auto;
+      border: 1px solid var(--line);
+      background: #101720;
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .modal-box p, .modal-box li { color: var(--muted); line-height: 1.65; }
+    .modal-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .close { background: rgba(255,255,255,.08); color: var(--text); border: 1px solid var(--line); border-radius: 999px; padding: 9px 13px; cursor: pointer; }
+
+    @media (max-width: 940px) {
+      .navlinks { display: none; }
+      .hero { padding-top: 34px; }
+      .hero-grid, .areas, .strip, .about-card, .contact-grid { grid-template-columns: 1fr; }
+      .photo-card { min-height: 520px; }
+      .strip .hero-actions { justify-content: flex-start; }
+      .steps { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 24px, var(--max)); }
+      .topbar .btn-primary { display: none; }
+      .nav { min-height: 64px; }
+      .brand strong { font-size: .92rem; }
+      .brand span { font-size: .70rem; }
+      .hero { padding: 26px 0 20px; }
+      h1 { font-size: 2.82rem; }
+      .lead { font-size: 1.02rem; line-height: 1.58; }
+      .hero-actions .btn { width: 100%; }
+      .trust-row, .steps { grid-template-columns: 1fr; }
+      .photo-card { min-height: 455px; border-radius: 28px; }
+      .photo-overlay { left: 14px; right: 14px; bottom: 14px; padding: 17px; }
+      section { padding: 48px 0; }
+      .area-card, .about-card, .contact-box, .strip { padding: 22px; border-radius: 26px; }
+      .about-photo { min-height: 330px; }
+      .floating-whats { display: block; }
+      footer { padding-bottom: 92px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#inicio" class="brand" aria-label="AMC Advocacia">
+        <div class="mark">AMC</div>
+        <div>
+          <strong>AMC Advocacia</strong>
+          <span>Previdenciário • Tributário • Criminal</span>
+        </div>
+      </a>
+      <nav class="navlinks" aria-label="Menu principal">
+        <a href="#areas">Áreas</a>
+        <a href="#como-funciona">Atendimento</a>
+        <a href="#quem-somos">Quem somos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <a class="btn btn-primary" href="https://wa.me/556598172713?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20AMC%20Advocacia%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">Atendimento jurídico estratégico em Cuiabá/MT</div>
+          <h1>Seu problema jurídico precisa de <span>direção clara</span>, não de promessa vazia.</h1>
+          <p class="lead">A AMC Advocacia atua com análise técnica, atendimento direto e condução estratégica em demandas previdenciárias, tributárias e criminais. Fale com um advogado e entenda o melhor caminho para o seu caso.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/556598172713?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20AMC%20Advocacia%20e%20preciso%20de%20orienta%C3%A7%C3%A3o." target="_blank" rel="noopener">Falar com advogado agora</a>
+            <a class="btn btn-secondary" href="#areas">Ver áreas de atuação</a>
+          </div>
+          <div class="trust-row">
+            <div class="trust-item"><strong>Atendimento objetivo</strong>Você explica o caso e recebe orientação inicial sobre os próximos passos.</div>
+            <div class="trust-item"><strong>Estratégia por área</strong>Previdenciário, tributário e criminal com linguagem clara e atuação direcionada.</div>
+            <div class="trust-item"><strong>Cuiabá e região</strong>Atendimento presencial e digital, conforme a necessidade do caso.</div>
+          </div>
+        </div>
+
+        <div class="photo-card" aria-label="Advogado da AMC Advocacia">
+          <div class="photo-overlay">
+            <strong>Arthur Muller Coutinho</strong>
+            <p>Advocacia com foco em análise cuidadosa do caso concreto, comunicação clara e atuação estratégica desde o primeiro atendimento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="areas">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Áreas de atuação</div>
+          <h2>Escolha a área que corresponde ao seu problema.</h2>
+          <p>O primeiro passo é identificar corretamente a natureza da demanda. Isso evita perda de tempo, documentos desnecessários e decisões precipitadas.</p>
+        </div>
+
+        <div class="areas">
+          <article class="area-card">
+            <div class="area-icon">01</div>
+            <h3>Previdenciário</h3>
+            <p>Atuação em benefícios negados, cessados ou analisados de forma incorreta pelo INSS.</p>
+            <ul>
+              <li>Auxílio-doença negado</li>
+              <li>Aposentadoria negada</li>
+              <li>BPC/LOAS</li>
+              <li>Benefício cortado ou suspenso</li>
+            </ul>
+            <a class="btn btn-primary" href="https://wa.me/556598172713?text=Ol%C3%A1%2C%20preciso%20de%20atendimento%20previdenci%C3%A1rio.%20Vim%20pelo%20site." target="_blank" rel="noopener">Atendimento previdenciário</a>
+          </article>
+
+          <article class="area-card">
+            <div class="area-icon">02</div>
+            <h3>Tributário</h3>
+            <p>Orientação e atuação em demandas envolvendo cobrança indevida, isenção e restituição de valores.</p>
+            <ul>
+              <li>Isenção de Imposto de Renda</li>
+              <li>Restituição de valores pagos</li>
+              <li>Tributação sobre aposentadoria</li>
+              <li>Análise documental do caso</li>
+            </ul>
+            <a class="btn btn-primary" href="https://wa.me/556598172713?text=Ol%C3%A1%2C%20preciso%20de%20atendimento%20tribut%C3%A1rio.%20Vim%20pelo%20site." target="_blank" rel="noopener">Atendimento tributário</a>
+          </article>
+
+          <article class="area-card">
+            <div class="area-icon">03</div>
+            <h3>Criminal</h3>
+            <p>Defesa criminal estratégica, atendimento reservado e medidas urgentes quando a situação exige resposta rápida.</p>
+            <ul>
+              <li>Prisão em flagrante</li>
+              <li>Audiência de custódia</li>
+              <li>Inquérito policial</li>
+              <li>Defesa em processo criminal</li>
+            </ul>
+            <a class="btn btn-primary" href="https://wa.me/556598172713?text=Ol%C3%A1%2C%20preciso%20de%20atendimento%20criminal%20com%20urg%C3%AAncia.%20Vim%20pelo%20site." target="_blank" rel="noopener">Atendimento criminal</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container strip">
+        <div>
+          <div class="eyebrow">Atendimento imediato</div>
+          <h2>Explique seu caso pelo WhatsApp.</h2>
+          <p>Envie uma mensagem com um breve resumo do problema. A partir disso, será possível indicar quais documentos são necessários e qual o caminho jurídico mais adequado.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/556598172713?text=Ol%C3%A1%2C%20gostaria%20de%20explicar%20meu%20caso%20para%20a%20AMC%20Advocacia." target="_blank" rel="noopener">Enviar mensagem</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Como funciona</div>
+          <h2>Atendimento simples, direto e organizado.</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><strong>Você envia o resumo</strong><p>Conte o que aconteceu, qual sua urgência e quais documentos já possui.</p></div>
+          <div class="step"><div class="num">2</div><strong>Análise inicial</strong><p>O caso é enquadrado na área correta para evitar orientação genérica.</p></div>
+          <div class="step"><div class="num">3</div><strong>Documentos necessários</strong><p>Você recebe uma lista objetiva do que precisa ser separado.</p></div>
+          <div class="step"><div class="num">4</div><strong>Estratégia jurídica</strong><p>Com as informações, é definido o próximo passo administrativo ou judicial.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quem-somos">
+      <div class="container about-card">
+        <div class="about-photo" aria-label="Arthur Muller Coutinho"></div>
+        <div>
+          <div class="eyebrow">Quem somos</div>
+          <h2>Advocacia com técnica, clareza e responsabilidade.</h2>
+          <p>A AMC Advocacia atua em Cuiabá/MT com foco em atendimento jurídico estratégico nas áreas previdenciária, tributária e criminal. O escritório preza por comunicação clara, análise individualizada e condução responsável do caso concreto.</p>
+          <p>Cada demanda é avaliada com atenção aos documentos, aos riscos e às possibilidades jurídicas reais, sem promessas de resultado e sem linguagem complicada para o cliente.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/556598172713?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20a%20AMC%20Advocacia." target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-secondary" href="https://www.google.com.br/maps/place/Edif%C3%ADcio+Cuiab%C3%A1+Work+Center/@-15.5852338,-56.0798737,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgICC99WvwAE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAPNQkAHle-TeYdeOI4YAhge5WyRn9SJJwimyl-NdZ6nG_7CyWekeCpFyuoEjC1SyOCayK3W7w1ZEYD9O0SeBA6WKSDenAIMn2xx7LyVOlEiKWH-NNnP6Kw1Q5KdL5VQm3XcKlDJZbDCj%3Dw190-h86-k-no!7i4032!8i1816!4m7!3m6!1s0x939db1af781b05ed:0xb44f75749397de11!8m2!3d-15.5850672!4d-56.0798938!10e5!16s%2Fg%2F1tj9d26c?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Ver no Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container contact-grid">
+        <div class="contact-box">
+          <div class="eyebrow">Contato</div>
+          <h3>Fale com a AMC Advocacia</h3>
+          <p><strong>WhatsApp:</strong> +55 65 9817-2713</p>
+          <address>Av. Historiador Rubens de Mendonça, 1836 – Jardim Aclimação, Edifício Cuiabá Work Center, Sala 803, Cuiabá/MT, 78050-280.</address>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/556598172713?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20AMC%20Advocacia." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+            <a class="btn btn-secondary" href="https://www.google.com.br/maps/place/Edif%C3%ADcio+Cuiab%C3%A1+Work+Center/@-15.5852338,-56.0798737,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgICC99WvwAE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAPNQkAHle-TeYdeOI4YAhge5WyRn9SJJwimyl-NdZ6nG_7CyWekeCpFyuoEjC1SyOCayK3W7w1ZEYD9O0SeBA6WKSDenAIMn2xx7LyVOlEiKWH-NNnP6Kw1Q5KdL5VQm3XcKlDJZbDCj%3Dw190-h86-k-no!7i4032!8i1816!4m7!3m6!1s0x939db1af781b05ed:0xb44f75749397de11!8m2!3d-15.5850672!4d-56.0798938!10e5!16s%2Fg%2F1tj9d26c?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Abrir mapa</a>
+          </div>
+        </div>
+        <div class="contact-box">
+          <iframe class="map-frame" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Edif%C3%ADcio%20Cuiab%C3%A1%20Work%20Center%20Sala%20803%20Cuiab%C3%A1%20MT&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© <span id="year"></span> AMC Advocacia. Todos os direitos reservados.</div>
+      <button class="privacy" type="button" onclick="openPrivacy()">Política de Privacidade</button>
+    </div>
+  </footer>
+
+  <div class="floating-whats">
+    <a class="btn btn-primary" href="https://wa.me/556598172713?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20AMC%20Advocacia%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener">Falar pelo WhatsApp</a>
+  </div>
+
+  <div class="modal" id="privacyModal" role="dialog" aria-modal="true" aria-label="Política de Privacidade">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Política de Privacidade</h2>
+        <button class="close" type="button" onclick="closePrivacy()">Fechar</button>
+      </div>
+      <p>A AMC Advocacia respeita a privacidade dos usuários deste site. As informações enviadas por WhatsApp, telefone ou formulário são utilizadas exclusivamente para contato, triagem inicial e prestação de serviços jurídicos, quando contratados.</p>
+      <p>Dados pessoais poderão incluir nome, telefone, informações sobre o caso e documentos eventualmente encaminhados pelo próprio interessado. O tratamento desses dados observará a finalidade informada, a segurança das informações e as regras aplicáveis de proteção de dados.</p>
+      <p>Este site pode utilizar recursos de navegação, links externos e ferramentas de mensuração de visitas. O usuário pode entrar em contato para solicitar esclarecimentos sobre o uso de seus dados.</p>
+      <p>O envio de mensagem não cria, por si só, relação advogado-cliente, que depende de análise do caso e formalização da contratação quando aplicável.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function openPrivacy() { document.getElementById('privacyModal').classList.add('open'); }
+    function closePrivacy() { document.getElementById('privacyModal').classList.remove('open'); }
+    document.getElementById('privacyModal').addEventListener('click', function(e) {
+      if (e.target === this) closePrivacy();
+    });
+  </script>
+</body>
+</html>
