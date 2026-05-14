@@ -1,0 +1,22 @@
+AMC Jurídico Premium V2
+
+Arquivos:
+- index.html: página principal institucional, com abas para as áreas.
+- criminal.html: página criminal.
+- previdenciario.html: página previdenciária.
+- tributario.html: página tributária/isenção de IR.
+
+Configurações:
+- WhatsApp: 5565984039909
+- OAB: OAB/MT 10.889
+- GTM: GTM-NRM596PH
+
+Subir no GitHub:
+1. Apague os HTML antigos.
+2. Envie estes arquivos na raiz do repositório.
+3. Aguarde o deploy do GitHub Pages.
+4. Teste:
+   https://amcjuridico.com.br
+   https://amcjuridico.com.br/criminal.html
+   https://amcjuridico.com.br/previdenciario.html
+   https://amcjuridico.com.br/tributario.html
