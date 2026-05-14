@@ -1,0 +1,18 @@
+ARQUIVOS DO SITE AMC
+
+Suba todos os arquivos juntos na mesma pasta do domínio.
+
+Páginas:
+- index.html = página principal institucional
+- previdenciario.html = página da campanha previdenciária
+- tributario.html = página da campanha tributária
+- criminal.html = página da campanha criminal
+
+URLs esperadas:
+- amcjuridico.com.br/
+- amcjuridico.com.br/previdenciario.html
+- amcjuridico.com.br/tributario.html
+- amcjuridico.com.br/criminal.html
+
+Observação:
+Se quiser URL sem .html, configure redirecionamento/rewrites no provedor.
