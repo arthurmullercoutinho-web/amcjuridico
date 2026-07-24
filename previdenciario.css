@@ -1,0 +1,575 @@
+/* =========================================================================
+   previdenciario.css — v3
+   Sistema visual exclusivo da página previdenciária (auxílio-doença /
+   benefício por incapacidade). Isolado: não é referenciado por index.html,
+   tributario.html ou criminal.html, e não altera style.css.
+
+   Identidade: verde muito escuro e fechado (fundo institucional), verde
+   fluorescente reservado ao CTA principal de conversão, dourado usado
+   apenas em detalhes institucionais (selo OAB), creme para seções claras.
+   ========================================================================= */
+
+:root{
+  --pv-bg:#050F09;
+  --pv-bg2:#081A10;
+  --pv-surface:#0D2016;
+  --pv-surface2:#12281B;
+  --pv-line:rgba(140,245,164,.14);
+  --pv-line-strong:rgba(50,232,91,.32);
+
+  --pv-verde-fluor:#32E85B;   /* somente CTA principal de conversão */
+  --pv-verde-fluor2:#5FF082;
+  --pv-verde-claro:#8CF5A4;   /* destaques de texto, títulos de seção */
+  --pv-verde-fechado:#1B4D2C; /* botões discretos / contornos */
+  --pv-verde-fechado2:#25603A;
+
+  --pv-dourado:#C7A24B;       /* uso pontual: selo OAB, pequenos detalhes */
+  --pv-dourado-suave:rgba(199,162,75,.14);
+
+  --pv-creme:#F6F3E9;
+  --pv-creme2:#EEE9D9;
+
+  --pv-texto-claro:#F2F7F3;
+  --pv-texto-claro-muted:#B9CBC0;
+  --pv-texto-escuro:#0E2417;
+  --pv-texto-escuro-muted:#4A5C50;
+
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ---------- tipografia: título editorial, corpo legível ---------- */
+body{ font-family:var(--font-sans); }
+h1{ font-family:var(--font-serif); }
+h2,h3{ font-family:var(--font-sans); letter-spacing:-.02em; }
+
+/* ---------- cabeçalho: compacto, CTA discreto ---------- */
+.header{
+  background:rgba(5,15,9,.97);
+  border-bottom:1px solid var(--pv-line);
+}
+.brand-text{ color:var(--pv-texto-claro); }
+.divider{ background:rgba(140,245,164,.3); }
+.menu{ color:#dcefe2; }
+.menu a:hover{ color:var(--pv-verde-claro); }
+
+/* CTA do cabeçalho: contornado, verde fechado — não compete com o CTA do hero */
+.header-cta{
+  background:transparent;
+  border:1px solid var(--pv-verde-fechado2);
+  color:var(--pv-verde-claro);
+  font-weight:700;
+  display:inline-flex; align-items:center; gap:8px;
+  transition:background .15s ease, border-color .15s ease;
+}
+.header-cta:hover{ background:rgba(140,245,164,.08); border-color:var(--pv-verde-claro); }
+.header-cta svg{ width:15px; height:15px; flex-shrink:0; }
+
+/* ---------- botões ---------- */
+/* Primário: verde fluorescente — reservado ao CTA de conversão */
+.btn.primary{
+  background:linear-gradient(135deg,var(--pv-verde-fluor2),var(--pv-verde-fluor));
+  color:#04150B;
+  border-color:transparent;
+  font-weight:800;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  box-shadow:0 14px 34px rgba(50,232,91,.28);
+}
+.btn.primary:hover{ box-shadow:0 18px 42px rgba(50,232,91,.38); }
+.btn.primary svg{ width:19px; height:19px; flex-shrink:0; }
+
+/* Secundário / discreto: contornado, sem preenchimento chamativo */
+.btn.dark{
+  background:rgba(255,255,255,.03);
+  color:var(--pv-texto-claro);
+  border:1px solid var(--pv-line-strong);
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+}
+.btn.dark svg{ width:16px; height:16px; flex-shrink:0; }
+
+/* ---------- hero: primeira dobra, altura automática (sem cortes) ---------- */
+.hero{
+  background:
+    radial-gradient(900px 460px at 86% 6%, rgba(50,232,91,.10), transparent 60%),
+    radial-gradient(700px 420px at 2% 98%, rgba(140,245,164,.06), transparent 60%),
+    linear-gradient(180deg,var(--pv-bg) 0%, var(--pv-bg2) 100%);
+  min-height:auto;
+  padding:56px 0 64px;
+}
+.hero .container{
+  display:grid;
+  grid-template-columns:1.08fr .92fr;
+  align-items:center;
+  gap:44px;
+}
+.hero-content{ max-width:600px; padding:0; }
+
+.trust-pill{
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid rgba(199,162,75,.4);
+  background:var(--pv-dourado-suave);
+  color:var(--pv-dourado);
+  font-family:var(--font-sans);
+  font-size:12.5px; font-weight:700; letter-spacing:.03em;
+  padding:7px 14px; border-radius:999px; margin-bottom:18px;
+}
+.trust-pill svg{ width:14px; height:14px; flex-shrink:0; }
+
+.kicker{ color:var(--pv-verde-claro); margin-bottom:14px; font-size:13px; font-family:var(--font-sans); }
+.kicker:before{ background:var(--pv-verde-fluor); }
+
+h1{
+  font-size:clamp(32px,3.6vw,48px);
+  line-height:1.2;
+  font-weight:700;
+  font-style:normal;
+  color:var(--pv-texto-claro);
+  max-width:600px;
+}
+h1 span{ color:var(--pv-verde-fluor); font-style:italic; }
+
+.lead{
+  font-family:var(--font-sans);
+  font-size:17px;
+  line-height:1.6;
+  color:var(--pv-texto-claro-muted);
+  margin:20px 0 0;
+  max-width:520px;
+}
+
+.actions{
+  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.actions .btn{ padding:16px 26px; font-size:15.5px; }
+
+/* utilitário: microtexto de confiança do hero (mobile-only) */
+.hero-microtexto{
+  display:none;
+  font-family:var(--font-sans);
+  margin:0;
+}
+
+/* espaçamento real entre as ações e a seção seguinte */
+.hero-content{ padding-bottom:8px; }
+
+/* ---------- composição visual da direita: decisão do INSS / perícia / análise ---------- */
+.hero-visual{
+  position:relative;
+  min-height:420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hv-painel{
+  width:100%;
+  max-width:320px;
+  background:linear-gradient(180deg,var(--pv-surface2),var(--pv-surface));
+  border:1px solid var(--pv-line);
+  border-radius:20px;
+  padding:24px 24px 26px;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+  position:relative;
+  z-index:2;
+}
+.hv-painel .hv-topo{ display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; }
+.hv-painel .hv-selo{
+  width:36px; height:36px; border-radius:10px; flex-shrink:0;
+  background:rgba(199,162,75,.16);
+  border:1px solid rgba(199,162,75,.4);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--pv-dourado);
+}
+.hv-painel .hv-selo svg{ width:18px; height:18px; flex-shrink:0; }
+.hv-status{
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:var(--font-sans);
+  font-size:11px; font-weight:800; letter-spacing:.03em;
+  color:#ffd9d0; background:rgba(255,110,90,.14);
+  border:1px solid rgba(255,110,90,.35);
+  padding:5px 10px; border-radius:999px;
+}
+.hv-status .bolinha{ width:6px; height:6px; border-radius:50%; background:#ff6e5a; flex-shrink:0; }
+.hv-painel .hv-linha{ height:9px; border-radius:5px; background:rgba(255,255,255,.07); margin-bottom:10px; }
+.hv-painel .hv-linha.w90{ width:90%; }
+.hv-painel .hv-linha.w70{ width:70%; }
+.hv-painel .hv-linha.w50{ width:50%; }
+.hv-painel .hv-rodape{
+  margin-top:18px; padding-top:14px; border-top:1px solid var(--pv-line);
+  font-family:var(--font-sans); font-size:12px; color:var(--pv-texto-claro-muted);
+}
+
+.hv-flutuante{
+  position:absolute;
+  display:flex; align-items:center; gap:10px;
+  background:linear-gradient(180deg,var(--pv-surface2),var(--pv-surface));
+  border:1px solid var(--pv-line);
+  border-radius:14px;
+  padding:11px 15px;
+  font-family:var(--font-sans);
+  font-size:12.5px; font-weight:700; color:var(--pv-texto-claro);
+  box-shadow:0 20px 44px rgba(0,0,0,.4);
+  z-index:3;
+}
+.hv-flutuante .ic{
+  width:28px; height:28px; border-radius:8px; flex-shrink:0;
+  background:rgba(50,232,91,.14); color:var(--pv-verde-claro);
+  display:flex; align-items:center; justify-content:center;
+}
+.hv-flutuante .ic svg{ width:15px; height:15px; flex-shrink:0; }
+.hv-f1{ top:4%; left:-8%; }
+.hv-f2{ bottom:14%; left:-4%; transform:rotate(-3deg); }
+.hv-f3{ bottom:-3%; right:0; transform:rotate(2deg); }
+
+@media (max-width:1180px){ .hv-f1{ left:-2%; } }
+@media (max-width:1024px){
+  .hero .container{ grid-template-columns:1fr; }
+  .hero-visual{ display:none; }
+}
+
+/* pills de área (Previdenciário/Tributário/Criminal) não existem mais no
+   markup desta página — removidos fisicamente do HTML (não apenas ocultos). */
+
+/* =========================================================================
+   SEÇÃO 1 — "problema": abertura empática, clara (creme)
+   ========================================================================= */
+.problema{
+  background:var(--pv-creme);
+  padding:60px 0;
+}
+.problema .eyebrow{ color:#3B7A52; font-family:var(--font-sans); }
+.problema h2{ color:var(--pv-texto-escuro); }
+.problema .section-head p{ color:var(--pv-texto-escuro-muted); }
+.problema-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:32px;
+}
+.problema-item{
+  background:#fff;
+  border:1px solid rgba(14,36,23,.08);
+  border-radius:16px;
+  padding:18px 16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 10px 26px rgba(14,36,23,.05);
+}
+.problema-item .ic{
+  width:40px; height:40px; border-radius:10px; flex-shrink:0;
+  background:rgba(27,77,44,.08);
+  display:flex; align-items:center; justify-content:center;
+  color:#2E7A45;
+}
+.problema-item .ic svg{ width:20px; height:20px; flex-shrink:0; }
+.problema-item span{ font-size:14px; font-weight:600; color:var(--pv-texto-escuro); line-height:1.35; }
+
+/* =========================================================================
+   SEÇÃO 2 — "percurso": como a análise funciona (dark) — layout completo
+   ========================================================================= */
+.percurso{
+  background:
+    radial-gradient(650px 360px at 12% 15%, rgba(140,245,164,.06), transparent 60%),
+    linear-gradient(180deg,var(--pv-bg2),var(--pv-bg));
+  border-top:1px solid var(--pv-line);
+  border-bottom:1px solid var(--pv-line);
+  padding:64px 0;
+}
+.percurso .eyebrow{ color:var(--pv-verde-claro); font-family:var(--font-sans); }
+.percurso h2{ color:var(--pv-texto-claro); }
+.percurso .section-head p{ color:var(--pv-texto-claro-muted); }
+
+.percurso-linha{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+  margin-top:40px;
+  position:relative;
+}
+.percurso-linha::before{
+  content:"";
+  position:absolute;
+  top:30px;
+  left:60px; right:60px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--pv-line-strong) 15%,var(--pv-line-strong) 85%,transparent);
+  z-index:0;
+}
+.etapa{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:14px;
+}
+.etapa .no{
+  width:60px; height:60px; border-radius:50%; flex-shrink:0;
+  background:linear-gradient(150deg,rgba(50,232,91,.18),rgba(50,232,91,.04));
+  border:1px solid var(--pv-line-strong);
+  box-shadow:0 0 0 6px rgba(50,232,91,.05), 0 12px 26px rgba(0,0,0,.35);
+  color:var(--pv-verde-claro);
+  display:flex; align-items:center; justify-content:center;
+}
+.etapa .no svg{ width:26px; height:26px; flex-shrink:0; }
+.etapa h3{ color:var(--pv-texto-claro); font-size:17px; }
+.etapa p{ color:var(--pv-texto-claro-muted); font-size:14.5px; line-height:1.55; max-width:220px; }
+
+@media (max-width:900px){
+  .percurso-linha{ grid-template-columns:1fr; gap:30px; }
+  .percurso-linha::before{
+    top:0; bottom:0; left:30px; right:auto;
+    width:1px; height:auto;
+    background:linear-gradient(180deg,transparent,var(--pv-line-strong) 10%,var(--pv-line-strong) 90%,transparent);
+  }
+  .etapa{ flex-direction:row; text-align:left; align-items:flex-start; }
+  .etapa .no{ margin-top:2px; }
+  .etapa p{ max-width:none; }
+}
+
+/* =========================================================================
+   SEÇÃO 3 — "situações atendidas" (antigo #detalhes): cards claros
+   ========================================================================= */
+#detalhes{ background:var(--pv-creme); padding:64px 0; }
+#detalhes .eyebrow{ color:#3B7A52; font-family:var(--font-sans); }
+#detalhes h2{ color:var(--pv-texto-escuro) !important; }
+#detalhes .section-head p{ color:var(--pv-texto-escuro-muted); }
+
+#detalhes .card{
+  background:#ffffff;
+  border:1px solid rgba(14,36,23,.08);
+  box-shadow:0 16px 36px rgba(14,36,23,.06);
+  min-height:0;
+}
+#detalhes .card::before{ display:none; }
+#detalhes .card h3{ color:var(--pv-texto-escuro); font-size:22px; }
+#detalhes .card p, #detalhes .card li{ color:var(--pv-texto-escuro-muted); }
+
+/* correção definitiva do bug de ícone gigante: dimensão explícita e fixa */
+.icone-card{
+  width:56px;
+  height:56px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  margin-bottom:18px;
+  background:rgba(50,145,90,.1);
+  border:1px solid rgba(50,145,90,.28);
+  color:#2E7A45;
+}
+.icone-card svg{
+  width:26px;
+  height:26px;
+  flex-shrink:0;
+}
+#detalhes .card .tag{ color:#2E7A45; font-family:var(--font-sans); }
+#detalhes .card .tag .num{ color:rgba(14,36,23,.28); }
+#detalhes .btn.dark{
+  background:rgba(14,36,23,.04);
+  color:var(--pv-texto-escuro);
+  border-color:rgba(14,36,23,.16);
+}
+
+/* =========================================================================
+   SEÇÃO 4 — "atuação responsável": faixa curta, escura
+   ========================================================================= */
+.responsavel{
+  background:var(--pv-bg);
+  padding:52px 0;
+  border-bottom:1px solid var(--pv-line);
+}
+.responsavel .valores{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.responsavel .valor{ text-align:center; }
+.responsavel .valor .ic{
+  width:48px; height:48px; border-radius:12px; flex-shrink:0;
+  margin:0 auto 12px;
+  background:rgba(140,245,164,.08);
+  border:1px solid var(--pv-line-strong);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--pv-verde-claro);
+}
+.responsavel .valor .ic svg{ width:22px; height:22px; flex-shrink:0; }
+.responsavel .valor h3{ color:var(--pv-texto-claro); font-size:16.5px; margin-bottom:6px; }
+.responsavel .valor p{ color:var(--pv-texto-claro-muted); font-size:14px; line-height:1.55; }
+
+@media (max-width:768px){
+  .responsavel .valores{ grid-template-columns:1fr; gap:26px; }
+}
+
+/* =========================================================================
+   SEÇÃO 5 — "quem é o advogado" (about): clara
+   ========================================================================= */
+.about{ background:var(--pv-creme2); border-top:none; border-bottom:none; padding:64px 0; }
+.about .eyebrow{ color:#3B7A52; font-family:var(--font-sans); }
+.about h2{ color:var(--pv-texto-escuro); }
+.about .text{ color:var(--pv-texto-escuro-muted); }
+.photo{ border-color:rgba(14,36,23,.12); box-shadow:0 24px 60px rgba(14,36,23,.16); }
+
+/* =========================================================================
+   SEÇÃO 6 — localização, privacidade e rodapé: escura
+   ========================================================================= */
+#localizacao{ background:var(--pv-bg2); padding:64px 0; }
+#localizacao .eyebrow{ color:var(--pv-verde-claro); font-family:var(--font-sans); }
+#localizacao h2{ color:var(--pv-texto-claro); }
+.contact-card{ border-color:var(--pv-line); background:var(--pv-surface); }
+#localizacao address{ display:none; }
+#localizacao .actions{ justify-content:center; margin-top:22px; }
+
+.footer{ background:var(--pv-bg); border-top:1px solid var(--pv-line); color:var(--pv-texto-claro-muted); padding-bottom:34px; }
+.privacy{ color:var(--pv-verde-claro); }
+
+/* =========================================================================
+   MOBILE — telas pequenas desenhadas especificamente, não empilhamento
+   ========================================================================= */
+@media (max-width:1024px){
+  .hero{ padding:40px 0 48px; }
+}
+
+@media (max-width:768px){
+  .problema-grid{ grid-template-columns:1fr 1fr; }
+}
+
+@media (max-width:640px){
+  html,body{ overflow-x:hidden; }
+
+  .trust-pill{ font-size:11px; padding:6px 12px; }
+  h1{ font-size:clamp(27px,7.6vw,34px); line-height:1.24; }
+  .lead{ font-size:16px; line-height:1.6; margin-top:16px; }
+  .actions{ margin-top:24px; gap:12px; }
+  .actions .btn{ width:100%; text-align:center; }
+
+  .problema{ padding:44px 0; }
+  .problema-grid{ grid-template-columns:1fr; gap:10px; margin-top:24px; }
+  .problema-item{ padding:16px; }
+
+  .percurso{ padding:44px 0; }
+  .percurso-linha{ margin-top:30px; }
+
+  #detalhes{ padding:44px 0; }
+  #detalhes .card{ padding:22px; }
+
+  .responsavel{ padding:40px 0; }
+
+  .about{ padding:44px 0; }
+  .about-grid{ gap:26px; }
+  .photo img{ aspect-ratio:1/1; }
+
+  #localizacao{ padding:44px 0; }
+  .contact-card{ padding:26px 20px; }
+  #localizacao .actions{ flex-direction:column; }
+  #localizacao .actions .btn{ width:100%; }
+
+  .footer{ padding-bottom:28px; }
+  .footer-row{ text-align:center; justify-content:center; }
+}
+
+/* =========================================================================
+   REVISÃO MOBILE (≤767px) — correção da primeira dobra, CTA duplo,
+   cabeçalho compacto e auditoria geral. Bloco adicionado por último para
+   ter precedência sobre os breakpoints anteriores nesta faixa, sem alterar
+   nenhuma regra de desktop (>767px continua exatamente como estava).
+   ========================================================================= */
+@media (max-width:767px){
+  html,body{ overflow-x:hidden; }
+
+  /* ---- cabeçalho compacto, CTA de WhatsApp contornado visível ---- */
+  .nav{ min-height:64px; gap:10px; }
+  .header-cta{
+    display:inline-flex;
+    padding:8px 12px;
+    font-size:12px;
+    gap:6px;
+    border-radius:7px;
+    white-space:nowrap;
+  }
+  .header-cta svg{ width:13px; height:13px; }
+
+  /* ---- primeira dobra: altura automática, sem corte, só o CTA principal ---- */
+  .hero{
+    min-height:calc(100svh - 65px);
+    height:auto;
+    box-sizing:border-box;
+    display:flex;
+    align-items:center;
+    padding:22px 0 24px;
+  }
+  .hero .container{ padding:0; }
+  .hero-content{ padding:0; }
+
+  .trust-pill{ margin-bottom:12px; }
+  .kicker{ margin-bottom:10px; }
+  h1{ margin:0; }
+  .lead{ margin-top:12px; }
+
+  .actions{ margin-top:18px; gap:12px; }
+  .actions .btn{ min-height:48px; }
+
+  /* remove "Entender atuação" da primeira dobra; mantém só o CTA principal */
+  .cta-desktop-only{ display:none; }
+
+  /* microtexto de confiança encerra a primeira dobra com respiro real */
+  .hero-microtexto{
+    display:block;
+    margin-top:16px;
+    font-size:13px;
+    line-height:1.5;
+    color:var(--pv-texto-claro-muted);
+    text-align:center;
+  }
+
+  /* ---- ícones dos cards: dimensão fixa, nunca acompanha a largura da tela ---- */
+  .icone-card{ width:52px; height:52px; flex-shrink:0; }
+  .icone-card svg{ width:26px; height:26px; flex-shrink:0; }
+  .hv-flutuante .ic{ flex-shrink:0; }
+  .problema-item .ic{ flex-shrink:0; }
+  .etapa .no{ flex-shrink:0; }
+  .responsavel .valor .ic{ flex-shrink:0; }
+
+  /* ---- espaçamentos e proporções gerais, sem redesenhar o já existente ---- */
+  .card{ min-height:0; }
+  #localizacao .actions{ gap:12px; }
+  .contact-card{ text-align:center; }
+}
+
+/* =========================================================================
+   REFORÇO FINAL — ocultação garantida do CTA desktop no mobile e exibição
+   garantida do microtexto, com !important por exigência explícita, para
+   blindar contra qualquer especificidade conflitante nas regras acima.
+   ========================================================================= */
+@media (max-width: 767px) {
+  .hero .actions .cta-desktop-only {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-microtexto {
+    display: block !important;
+    margin: 12px 0 0 !important;
+    padding: 0 !important;
+    color: rgba(235, 255, 245, 0.82);
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .hero .actions {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .hero .actions .primary {
+    display: flex;
+    width: 100%;
+  }
+}
